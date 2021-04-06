@@ -1,0 +1,37 @@
+.filters {
+	background-color: #dddd;
+	height: 38px;
+	width: 90%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;	
+}
+
+#input-search {
+	margin-top: 9px; 
+	margin-left: 10px; 
+	width: 82%;
+}
+
+button {
+	color: #FFFFFF;
+	font-size: 13px;
+	
+	height: 22px;
+	width: 6%;
+	background-color: #c22219;
+	border-style: none;
+	border-radius: 4px;
+
+	float: right;
+	margin-top: 8px;
+	margin-bottom: 11px;
+	margin-right: 12px;
+}
+
+button:hover {
+	opacity: 90%;
+}
+
+#retailer-characters {
+	margin-left: 300px;
+}
