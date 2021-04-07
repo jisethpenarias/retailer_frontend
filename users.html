@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retailer</title>
+  <link rel="stylesheet" href="styles/commonUser.css" />
+  <link rel="stylesheet" href="styles/headerUser.css" />
+  <link rel="stylesheet" href="styles/footerUser.css" />
+  <link rel="stylesheet" href="styles/filtersUser.css" />
+  <script src='scripts/users.js' defer></script>
+</head>
+
+<body>
+  <header>
+    <b>SHOPPING</b>
+  </header>
+  <div class="container">
+    <div class="filters">
+      <input id="input-search" placeholder="Search..." />
+      <button onclick="clearFilter()">Clear</button>
+      <button onclick="search()">Search</button>
+    </div>
+  </div>
+  <div style="margin-left: 25%;">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Gov Id</th>
+          <th>Email</th>
+          <th>Comapany</th>
+        </tr>
+      </thead>
+      <tbody id='retailer-characters'>
+
+      </tbody>
+    </table>
+  </div>
+  <nav>
+    <a href="orders.html">INFO ORDERS</a>
+  </nav>
+  <footer>
+    <p>RETAILER ASSESMENT</p>
+  </footer>
+</body>
+
+</html>

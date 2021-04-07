@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retailer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/common.css" />
+  <link rel="stylesheet" href="styles/header.css" />
+  <link rel="stylesheet" href="styles/footer.css" />
+  <link rel="stylesheet" href="styles/filters.css" />
+  <script src='scripts/orders.js' defer></script>
+  <script src='scripts/modal.js' defer></script>
+</head>
+
+<body>
+  <header>
+    <b>SHOPPING</b>
+  </header>
+  <div class="container">
+    <div class="filters">
+      <input id="input-search" placeholder="Search..." />
+      <button onclick="clearFilter()">Clear</button>
+      <button onclick="search()">Search</button>
+    </div>
+    <div class="filters-localion">
+      <input id="input-city" placeholder="City..." />
+      <input id="input-state" placeholder="State..." />
+      <input id="input-country" placeholder="Country..." />
+      <!-- <button onclick="clearFilter()">Clear</button>
+            <button onclick="search()">Search</button> -->
+    </div>
+    <div class="filters-date">
+      <input type="date" id="date-start">
+      <input type="date" id="date-end">
+    </div>
+  </div>
+  <div style="margin-left: 25%;">
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>User</th>
+          <th>Date</th>
+          <th>Paid</th>
+          <th>Subtotal</th>
+          <th>Taxes</th>
+          <th>Total</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id='retailer-characters'>
+
+      </tbody>
+    </table>
+  </div>
+  <div id="myModal" class="modal">
+
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div id="content-modal"></div>
+    </div>
+
+  </div>
+  <nav>
+    <a href="users.html">INFO USERS</a>
+  </nav>
+  <footer>
+    <p>RETAILER ASSESMENT</p>
+  </footer>
+</body>
+
+</html>

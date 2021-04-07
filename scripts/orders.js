@@ -1,18 +1,3 @@
-// fetch("http://127.0.0.1:8000/users/all/")
-//   .then(response => response.json())
-//   .then(users => {
-//     showCharacters(users);
-//   } 
-//   );
-
-// showCharacters = users => {
-//     const usersDiv = document.querySelector("#retailer-characters");
-//     users.forEach(user => {
-//     const userElement = document.createElement("p");
-//     userElement.innerText = `name: ${user.name}`;
-//     usersDiv.append(userElement);
-//     });
-// }
 
 var ordersRetrieved = [];
 var ordersFiltered = [];
@@ -98,19 +83,49 @@ openModal = (order_id) => {
   })
 }
 
-status
-search = () => {
+async function search(){
   const serachValue = document.getElementById('input-search').value;
-  if (serachValue == '') {
-    alert('el dato de busqueda no puede ser vacio');
-    return;
+  const cityValue = document.getElementById('input-city').value;
+  const stateValue = document.getElementById('input-state').value;
+  const countryValue = document.getElementById('input-country').value;
+  const dateStartValue = document.getElementById('date-start').value;
+  const dateEndValue = document.getElementById('date-end').value;
+  
+  if (serachValue != '') {
+    ordersFiltered = ordersRetrieved.filter(order => order.user.toLowerCase().includes(serachValue.toLowerCase()));
+  }
+  if (cityValue != '' && stateValue != '' &&  countryValue != '') {
+    const responseOrdersShipping = await fetch("http://127.0.0.1:8000/orders/shipping/?city=" + cityValue +"&state=" + stateValue + "&country=" + countryValue)
+    const responseOrdersShippingJson = await responseOrdersShipping.json()
+    const notRepeated = ordersFiltered.filter(order => { 
+      return responseOrdersShippingJson.some(f => {
+        return f.order_id != order.order_id
+      })
+    })
+    ordersFiltered = notRepeated.length === 0 ? ordersFiltered : notRepeated
+    ordersFiltered = ordersFiltered.concat(responseOrdersShippingJson)
+  }
+  if (dateStartValue != '' || dateEndValue != '') {
+    const responseDates = await fetch("http://127.0.0.1:8000/orders/" + dateStartValue + "-" + dateEndValue)
+    const responseDatesJson = await responseDates.json()
+    const notRepeatedDate = ordersFiltered.filter(order => { 
+      return responseDatesJson.some(f => {
+        return f.order_id != order.order_id
+      })
+    })
+    ordersFiltered = notRepeatedDate.length === 0 ? ordersFiltered : notRepeatedDate
+    ordersFiltered = ordersFiltered.concat(responseDatesJson)
   }
 
-  ordersFiltered = ordersRetrieved.filter(order => order.user.toLowerCase().includes(serachValue.toLowerCase()));
   table(ordersFiltered)
 }
 
 clearFilter = () => {
   document.getElementById('input-search').value = '';
+  document.getElementById('input-city').value = '';
+  document.getElementById('input-state').value = '';
+  document.getElementById('input-country').value = '';
+  document.getElementById('date-start').value = '';
+  document.getElementById('date-end').value = '';
   table(ordersRetrieved);
 }

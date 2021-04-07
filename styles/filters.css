@@ -1,6 +1,22 @@
 .filters {
 	background-color: #dddd;
-	height: 38px;
+	height: 34px;
+	width: 90%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;	
+}
+
+.filters-localion {
+	background-color: #dddd;
+	height: 34px;
+	width: 90%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;	
+}
+
+.filters-date {
+	background-color: #dddd;
+	height: 34px;
 	width: 90%;
 	border: 1px solid #DDDDDD;
 	border-radius: 4px;	
@@ -10,6 +26,36 @@
 	margin-top: 9px; 
 	margin-left: 10px; 
 	width: 82%;
+}
+
+#input-city {
+	margin-top: 9px; 
+	margin-left: 10px; 
+	width: 26%;
+}
+
+#input-state {
+	margin-top: 9px; 
+	margin-left: 10px; 
+	width: 26%;
+}
+
+#input-country {
+	margin-top: 5px; 
+	margin-left: 10px; 
+	width: 25%;
+}
+
+#date-start {
+	margin-top: 5px; 
+	margin-left: 10px; 
+	width: 26%;
+}
+
+#date-end {
+	margin-top: 5px; 
+	margin-left: 10px;
+	width: 26%;
 }
 
 button {
