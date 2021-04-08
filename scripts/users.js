@@ -2,7 +2,11 @@
 var ordersRetrieved = [];
 var ordersFiltered = [];
 
-fetch("http://127.0.0.1:8000/users/")
+fetch("http://127.0.0.1:8000/users/", {
+  headers: {
+    'Authorization': 'Token ' + localStorage.getItem('accessToken')
+  }
+})
   .then(response => response.json())
   .then(users => {
     usersRetrieved = users;
@@ -48,4 +52,9 @@ search = () => {
 clearFilter = () => {
   document.getElementById('input-search').value = '';
   table(usersRetrieved);
+}
+
+logout = () => {
+  window.location.href = 'http://127.0.0.1:5500/frontend/login.html';
+  localStorage.setItem('accessToken', ''); 
 }

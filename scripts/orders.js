@@ -2,7 +2,11 @@
 var ordersRetrieved = [];
 var ordersFiltered = [];
 
-fetch("http://127.0.0.1:8000/orders/1,2,3")
+fetch("http://127.0.0.1:8000/orders/1,2,3",{
+    headers: {
+    'Authorization': 'Token ' + localStorage.getItem('accessToken')
+    }
+  })
   .then(response => response.json())
   .then(orders => {
     ordersRetrieved = orders;
@@ -32,11 +36,17 @@ table = (orders) => {
 
 openModal = (order_id) => {
   // console.log(order)
-  fetch("http://127.0.0.1:8000/order/"+ order_id + "/shipping/detail/")
+  fetch("http://127.0.0.1:8000/order/"+ order_id + "/shipping/detail/", 
+  {headers: {
+    'Authorization': 'Token ' + localStorage.getItem('accessToken')
+  }})
   .then(response => response.json())
   .then(shipping => {
 
-    fetch("http://127.0.0.1:8000/order/"+ order_id + "/payment/detail/")
+    fetch("http://127.0.0.1:8000/order/"+ order_id + "/payment/detail/", 
+    {headers: {
+      'Authorization': 'Token ' + localStorage.getItem('accessToken')
+    }})
     .then(response => response.json())
     .then(payments => {
 
@@ -95,7 +105,11 @@ async function search(){
     ordersFiltered = ordersRetrieved.filter(order => order.user.toLowerCase().includes(serachValue.toLowerCase()));
   }
   if (cityValue != '' && stateValue != '' &&  countryValue != '') {
-    const responseOrdersShipping = await fetch("http://127.0.0.1:8000/orders/shipping/?city=" + cityValue +"&state=" + stateValue + "&country=" + countryValue)
+    const responseOrdersShipping = await fetch("http://127.0.0.1:8000/orders/shipping/?city=" + cityValue +"&state=" + stateValue + "&country=" + countryValue, {
+      headers: {
+        'Authorization': 'Token ' + localStorage.getItem('accessToken')
+      }
+    })
     const responseOrdersShippingJson = await responseOrdersShipping.json()
     const notRepeated = ordersFiltered.filter(order => { 
       return responseOrdersShippingJson.some(f => {
@@ -106,7 +120,9 @@ async function search(){
     ordersFiltered = ordersFiltered.concat(responseOrdersShippingJson)
   }
   if (dateStartValue != '' || dateEndValue != '') {
-    const responseDates = await fetch("http://127.0.0.1:8000/orders/" + dateStartValue + "-" + dateEndValue)
+    const responseDates = await fetch("http://127.0.0.1:8000/orders/" + dateStartValue + "-" + dateEndValue, {headers: {
+      'Authorization': 'Token ' + localStorage.getItem('accessToken')
+    }})
     const responseDatesJson = await responseDates.json()
     const notRepeatedDate = ordersFiltered.filter(order => { 
       return responseDatesJson.some(f => {
@@ -128,4 +144,10 @@ clearFilter = () => {
   document.getElementById('date-start').value = '';
   document.getElementById('date-end').value = '';
   table(ordersRetrieved);
+}
+
+
+logout = () => {
+  window.location.href = 'http://127.0.0.1:5500/frontend/login.html';
+  localStorage.setItem('accessToken', ''); 
 }

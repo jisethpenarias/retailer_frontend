@@ -6,6 +6,17 @@ header {
 	border-bottom: 1px solid #CCCCCC;
 }
 
+.login {
+	color: #FFFFFF;
+	font-size: 14px;
+	line-height: 20px;
+
+	float: right;
+	margin-top: 25px;
+	margin-bottom: 11px;
+	margin-right: 100px;
+}
+
 b {
 	color: #FFFFFF;
 	font-size: 25px;

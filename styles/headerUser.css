@@ -17,5 +17,16 @@ b {
 	margin-left: 60px;
 }
 
+.logout {
+	color: #FFFFFF;
+	font-size: 14px;
+	line-height: 20px;
+
+	float: right;
+	margin-top: 30px;
+	margin-bottom: 11px;
+	margin-right: 100px;
+}
+
 
 

@@ -17,6 +17,7 @@
 <body>
   <header>
     <b>SHOPPING</b>
+    <button class="login" onclick="logout()">LOGOUT</button>
   </header>
   <div class="container">
     <div class="filters">
@@ -28,8 +29,6 @@
       <input id="input-city" placeholder="City..." />
       <input id="input-state" placeholder="State..." />
       <input id="input-country" placeholder="Country..." />
-      <!-- <button onclick="clearFilter()">Clear</button>
-            <button onclick="search()">Search</button> -->
     </div>
     <div class="filters-date">
       <input type="date" id="date-start">
@@ -63,11 +62,10 @@
     </div>
 
   </div>
-  <nav>
+  <nav class="link-users"> 
     <a href="users.html">INFO USERS</a>
   </nav>
   <footer>
-    <p>RETAILER ASSESMENT</p>
   </footer>
 </body>
 
