@@ -2,7 +2,7 @@
 var ordersRetrieved = [];
 var ordersFiltered = [];
 
-fetch("http://127.0.0.1:8000/orders/1,2,3",{
+fetch("http://127.0.0.1:8000/orders/",{
     headers: {
     'Authorization': 'Token ' + localStorage.getItem('accessToken')
     }
